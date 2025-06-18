@@ -3,3 +3,78 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    background-image: url(images/background\ .png);
+    background-size: cover;
+}
+
+html, body {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.image-block {
+    height: 34%;
+}
+
+.image-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.buttons-block {
+    height: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.buttons-row {
+    display: flex;
+    gap: 10%;
+    width: 100%;
+    justify-content: center;
+}
+
+.buttons-row button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 25%;
+}
+
+.buttons-row button img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+}
+
+.buttons-block button {
+    border-radius: 20px;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+button:hover img {
+    animation: jump 0.75s ease infinite;
+}
