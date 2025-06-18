@@ -1,16 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="images/icon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple page</title>
+  <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
 </head>
 <body>
-    <h1 style="text-align: center;">Абзац текста</h1>
-    <p style="font-size: 25px; text-align: center;"> With Mini Apps developers can use JavaScript to create infinitely flexible interfaces that can be launched right inside Telegram — and can completely replace any website.
-    Like bots, Mini Apps support seamless authorization, payments via third-party payment providers (with Google Pay and Apple Pay out of the box),
-    delivering tailored push notifications to users, and much more.</p>
-    <div style="display: flex; justify-content: center; gap: 60px;">
-        <button style="border-radius: 10px; font-size: 20px;" onclick="alert('Кнопка нажата')">Кнопка</button>
-        <button style="border-radius: 10px; font-size: 20px;" onclick="window.open('https://www.youtube.com', '_blank')">Открыть YouTube</button>
+  <script>
+    const theme = window.Telegram.WebApp.ColorScheme;
+    alert(theme);
+  </script>
+    <div class="container">
+      <div class="image-block">
+        <img src="images/img.png" alt="Big image">
+      </div>
+      <div class="buttons-block">
+        <div class="buttons-row">
+          <button onclick="alert('You have ordered a Big Mac')">
+            <img src="images/hamburger.png" alt="hamburger">
+            <div>Big Mac</div>
+          </button>
+          <button onclick="alert('You have ordered Fries')">
+            <img src="images/french-fries.png" alt="fries">
+            <div>Fries</div>
+          </button>
+        </div>  
+        <div class="buttons-row">
+          <button onclick="alert('You have ordered Pizza')">
+            <img src="images/pizza.png" alt="pizza">
+            <div>Pizza</div>
+          </button>
+          <button onclick="alert('You have ordered a Donut')">
+            <img src="images/donut.png" alt="donut">
+            <div>Donut</div>
+          </button>
+        </div>
+        
+      </div>
     </div>
 </body>
 </html>
