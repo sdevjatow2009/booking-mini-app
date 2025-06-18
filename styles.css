@@ -54,13 +54,13 @@ html, body {
 }
 
 .buttons-row button img {
-    width: 40px;
-    height: 40px;
+    width: 5vw;
+    height: 5vw;
     margin-bottom: 8px;
 }
 
 .buttons-block button {
-    border-radius: 20px;
+    border-radius: 2vw;
 }
 
 @keyframes jump {
