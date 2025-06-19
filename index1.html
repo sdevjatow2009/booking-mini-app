@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="booking.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Time Slots</title>
+    <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar-wrapper">
+            <button class="arrow-btn left-arrow">&lt;</button>
+            <div class="top-bar">
+                <button class="date-display">2025-06-19</button>
+            </div>
+            <button class="arrow-btn right-arrow">&gt;</button>
+        </div>
+        <div class="date-table">
+            <div class="time-row">
+                <div class="time-label">10:00</div>
+                <button class="btn unavailable">10:00</button>
+                <button class="btn unavailable">10:30</button>
+            </div>
+            <div class="time-row">
+                <div class="time-label">11:00</div>
+                <button class="btn unavailable">11:00</button>
+                <button class="btn unavailable">11:30</button>
+            </div>
+            <div class="time-row">
+                <div class="time-label">12:00</div>
+                <button class="btn available">12:00</button>
+                <button class="btn available">12:30</button>
+            </div>
+            <div class="time-row">
+                <div class="time-label">13:00</div>
+                <button class="btn available">13:00</button>
+                <button class="btn available">13:30</button>
+            </div>
+            <div class="time-row">
+                <div class="time-label">14:00</div>
+                <button class="btn unavailable">14:00</button>
+                <button class="btn unavailable">14:30</button>
+            </div>
+            <div class="time-row">
+                <div class="time-label">15:00</div>
+                <button class="btn unavailable">15:00</button>
+                <button class="btn unavailable">15:30</button>
+            </div>
+            <div class="time-row">
+                <div class="time-label">16:00</div>
+                <button class="btn available">16:00</button>
+                <button class="btn available">16:30</button>
+            </div>
+            <div class="time-row">
+                <div class="time-label">17:00</div>
+                <button class="btn available">17:00</button>
+                <button class="btn available">17:30</button>
+            </div>
+        </div>
+        <div class="legend">
+            <span class="dot available-dot"></span> - Available
+            <span class="dot unavailable-dot"></span> - Unavailable
+        </div>
+    </div>
+</body>
+</html>
