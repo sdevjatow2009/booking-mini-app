@@ -1,4 +1,11 @@
 <script>
+    import { goto } from "$app/navigation";
+    import { onMount } from 'svelte';
+
+  onMount(() => {
+        document.body.style.backgroundImage = 'none';
+    })
+
   let slots = $state([
     { time: '10:00', status: 'unavailable' },
     { time: '10:30', status: 'unavailable' },
@@ -30,6 +37,10 @@
     }
     return result;
   }
+
+  function goToMain() {
+    goto('/');
+  }
 </script>
 
 <div class="container">
@@ -55,6 +66,10 @@
         {/each}
       </div>
     {/each}
+  </div>
+
+  <div class="back-button">
+    <button class="backButton" onclick={goToMain}>Back</button>
   </div>
 
   <div class="legend">
