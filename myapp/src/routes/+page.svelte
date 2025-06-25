@@ -1,5 +1,5 @@
 <script>
-  import TimeSlots from '$lib/TimeSlots.svelte';
+  import MainPage from '$lib/MainPage.svelte';
 </script>
 
-<TimeSlots />
+<MainPage />

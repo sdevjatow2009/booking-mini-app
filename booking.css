@@ -10,11 +10,6 @@ html, body {
     padding: 0;
 }
 
-:global(body) {
-    background: none;
-    background-color: white;
-}
-
 .container {
     display: flex;
     flex-direction: column;
