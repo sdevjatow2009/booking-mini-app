@@ -68,8 +68,8 @@
     {/each}
   </div>
 
-  <div class="back-button">
-    <button class="backButton" onclick={goToMain}>Back</button>
+  <div class="back-button1">
+    <button class="backButton1" onclick={goToMain}>Back</button>
   </div>
 
   <div class="legend">

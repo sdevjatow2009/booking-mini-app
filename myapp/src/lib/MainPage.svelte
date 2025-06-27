@@ -2,6 +2,7 @@
     import { goto } from "$app/navigation";
     import { onMount } from 'svelte';
     import TimeSlots from "./TimeSlots.svelte";
+    import Status from "./Status.svelte";
 
     function order(item) {
         alert(`You have ordered ${item}`);
@@ -9,6 +10,10 @@
 
     function goToBooking() {
         goto('/booking');
+    }
+
+    function goToStatus(){
+        goto('/status')
     }
 
     onMount(() => {
@@ -39,9 +44,9 @@
                 <img src="/pizza.png" alt="Pizza">
                 <div>Booking</div>
             </button>
-            <button onclick={() => order('a Donut')}>
+            <button onclick={goToStatus}>
                 <img src="/donut.png" alt="a Donut">
-                <div>A Donut</div>
+                <div>Status</div>
             </button>
         </div>
     </div>
