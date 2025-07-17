@@ -1,35 +1,50 @@
 <script>
-    import { goto } from "$app/navigation";
-    import { onMount } from 'svelte';
+  import { goto } from "$app/navigation";
+  import { onMount } from "svelte";
+
+  let slots = [
+    { time: "10:00", status: "unavailable" },
+    { time: "10:30", status: "unavailable" },
+    { time: "11:00", status: "unavailable" },
+    { time: "11:30", status: "unavailable" },
+    { time: "12:00", status: "available" },
+    { time: "12:30", status: "available" },
+    { time: "13:00", status: "available" },
+    { time: "13:30", status: "available" },
+    { time: "14:00", status: "unavailable" },
+    { time: "14:30", status: "unavailable" },
+    { time: "15:00", status: "unavailable" },
+    { time: "15:30", status: "unavailable" },
+    { time: "16:00", status: "available" },
+    { time: "16:30", status: "available" },
+    { time: "17:00", status: "available" },
+    { time: "17:30", status: "available" },
+  ];
+
+  let tgData = null;
+  let selectedSlot = null;
+  let showModal = false;
 
   onMount(() => {
-        document.body.style.backgroundImage = 'none';
-    })
+    document.body.style.backgroundImage = "none";
 
-  let slots = $state([
-    { time: '10:00', status: 'unavailable' },
-    { time: '10:30', status: 'unavailable' },
-    { time: '11:00', status: 'unavailable' },
-    { time: '11:30', status: 'unavailable' },
-    { time: '12:00', status: 'available' },
-    { time: '12:30', status: 'available' },
-    { time: '13:00', status: 'available' },
-    { time: '13:30', status: 'available' },
-    { time: '14:00', status: 'unavailable' },
-    { time: '14:30', status: 'unavailable' },
-    { time: '15:00', status: 'unavailable' },
-    { time: '15:30', status: 'unavailable' },
-    { time: '16:00', status: 'available' },
-    { time: '16:30', status: 'available' },
-    { time: '17:00', status: 'available' },
-    { time: '17:30', status: 'available' },
-  ]);
+    if (window.Telegram && window.Telegram.WebApp) {
+      tgData = {};
+      for (const key in window.Telegram.WebApp) {
+        try {
+          const val = window.Telegram.WebApp[key];
+          if (typeof val !== "function") {
+            tgData[key] = val;
+          }
+        } catch {}
+      }
+    }
+  });
 
-  function toggle(slot) {
-    if (slot.status === 'available')
-    slot.status = 'unavailable'
+  function goToAbout() {
+    goto("/about");
   }
-
+  
   function groupSlots(slots) {
     const result = [];
     for (let i = 0; i < slots.length; i += 2) {
@@ -39,7 +54,28 @@
   }
 
   function goToMain() {
-    goto('/');
+    goto("/");
+  }
+
+    function openModal(slot) {
+    selectedSlot = slot;
+    showModal = true;
+  }
+
+  function closeModal() {
+    showModal = false;
+    selectedSlot = null;
+  }
+
+  function confirmReservation() {
+    if (window.Telegram && window.Telegram.WebApp) {
+      const payload = {
+        command: "reserve-slots",
+        payload: [selectedSlot.time],
+      };
+      window.Telegram.WebApp.sendData(JSON.stringify(payload));
+    }
+    closeModal();
   }
 </script>
 
@@ -59,8 +95,9 @@
         {#each pair as slot}
           <button
             class="btn {slot.status}"
-            onclick={() => toggle(slot)}
-            disabled={slot.status === 'unavailable'}>
+            on:click={() => slot.status === "available" && openModal(slot)}
+            
+          >
             {slot.time}
           </button>
         {/each}
@@ -68,8 +105,9 @@
     {/each}
   </div>
 
-  <div class="back-button1">
-    <button class="backButton1" onclick={goToMain}>Back</button>
+  <div class="controls-row">
+    <button class="backButton1" on:click={goToMain}>Back</button>
+    <button class="aboutButton" on:click={goToAbout}>About Me</button>
   </div>
 
   <div class="legend">
@@ -78,6 +116,18 @@
   </div>
 </div>
 
+{#if showModal}
+  <div class="modal-overlay">
+    <div class="modal">
+      <p>Reserve <strong>{selectedSlot.time}</strong>?</p>
+      <div class="modal-buttons">
+        <button on:click={confirmReservation}>Yes</button>
+        <button on:click={closeModal}>Cancel</button>
+      </div>
+    </div>
+  </div>
+{/if}
+
 <style>
-  @import '$lib/booking.css';
+  @import './booking.css';
 </style>
